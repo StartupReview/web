@@ -10,6 +10,5 @@ angular.module('startupReviewApp').run([
   '$state',
   '$stateParams',
   function($rootScope, $state, $stateParams) {
-    alert('HELLO WORLD!');
   }
 ]);
