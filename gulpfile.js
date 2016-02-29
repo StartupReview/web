@@ -6,21 +6,19 @@ const ENV_PROD = (ENV === 'production');
 
 const appConfig = require('./config/appConfig')[ENV];
 
-// const fs = require('fs');
+const childProcess = require('child_process');
+const concat = require('gulp-concat');
 const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const inject = require('gulp-inject'); //jshint ignore:line
 const jshint = require('gulp-jshint');
-const karma = require('karma').server;
 const less = require('gulp-less');
-const uglify = require('gulp-uglifyjs');
 const replace = require('gulp-replace');
-const childProcess = require('child_process');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglifyjs');
+const uuid = require('node-uuid');
 const watch = require('gulp-watch');
 const wrap = require('gulp-wrap');
-const concat = require('gulp-concat');
-const uuid = require('node-uuid');
-const rename = require('gulp-rename');
 
 require('gulp-task-list')(gulp);
 
