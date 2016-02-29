@@ -2,7 +2,7 @@
   <nav class="home-nav">
     <ul class="clearfix center">
       <li>
-        <a href="#">Trending</a>
+        <a class="active" href="#">Trending</a>
       </li>
       <li>
         <a href="#">Top</a>
@@ -12,4 +12,44 @@
       </li>
     </ul>
   </nav>
+  <div class="container">
+    <div class="companies">
+      <div class="company clearfix" ng-repeat="company in companies">
+        <div class="company-pic">
+          <img class="img-responsive" ng-src="{{ company.profilePic }}" alt="{{ company.name }}">
+        </div>
+        <div class="company-name-info col-sm-3">
+          <p class="name">
+            {{ company.name }}
+          </p>
+          <p class="desc">
+            {{ company.shortDescription }}
+          </p>
+          <p class="location">
+            {{ company.location }}
+          </p>
+        </div>
+        <div class="author-pic">
+          <img class="img-responsive" ng-src="{{ company.author.profilePic }}">
+        </div>
+        <div class="author-info col-sm-2">
+          <p class="name">
+            {{ company.author.firstName + ' ' + company.author.lastName }}
+          </p>
+          <p class="role">
+            {{ company.author.role + ' @' + company.author.organization }}
+          </p>
+        </div>
+        <div class="votes col-sm-1">
+          <i class="fa fa-arrow-up"></i> {{ company.votes }}
+        </div>
+        <div class="description col-sm-3">
+          {{ company.description }}
+        </div>
+        <div class="reviews-count">
+          <i class="fa fa-file-o"></i> {{ company.reviews }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
