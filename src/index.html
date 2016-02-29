@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app="startupReviewApp">
+
+<head>
+  <title ng:bind-template="Startup Review - {{ meta.title }}"></title>
+  <meta charset="utf-8" />
+  <meta name="fragment" content="!">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <meta name="title" content="{{ meta.title }}">
+  <meta name="description" content="{{ meta.description }}">
+  <!-- CSS -->
+  <!-- injectSrcCss:css -->
+  <!-- endinjectSrcCss -->
+  <!-- injectVendorCss:css -->
+  <!-- endinjectVendorCss -->
+</head>
+
+<body>
+  <!-- FACEBOOK -->
+  <div id="fb-root"></div>
+  <!-- need for ngAnimate -->
+  <base href="/" />
+  <div class="view-container view-frame view-fade-in" ui-view>
+  </div>
+  <script src="/libs.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <!-- injectVendorJs:js -->
+  <!-- endinjectVendorJs -->
+  <!-- injectSrcJs:js -->
+  <!-- endinjectSrcJs -->
+</body>
+
+</html>
