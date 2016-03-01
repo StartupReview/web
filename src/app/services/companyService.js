@@ -20,6 +20,8 @@ angular.module('startupReviewApp').service('companyService', [
       },
       slides: [{
         url: 'https://s3.amazonaws.com/startupreview/github_slide1.png'
+      }, {
+        url: 'https://s3.amazonaws.com/startupreview/github_slide2.png'
       }],
       type: 'Market Platform'
     }, {
@@ -40,6 +42,8 @@ angular.module('startupReviewApp').service('companyService', [
       },
       slides: [{
         url: 'https://s3.amazonaws.com/startupreview/github_slide1.png'
+      }, {
+        url: 'https://s3.amazonaws.com/startupreview/github_slide2.png'
       }],
       type: 'Market Platform'
     }];

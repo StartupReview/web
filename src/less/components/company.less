@@ -11,9 +11,11 @@
     }
   }
   .company-slides {
+    position: relative;
     .slide {
       height: 400px;
-      background: red;
+      background-size: cover;
+      background-position: center;
     }
   }
   .company-rating-info {
@@ -33,6 +35,7 @@
   }
   .company-location-info {
     padding: 35px 0;
+    margin-bottom: 50px;
     p {
       display: inline-block;
       font-size: 16px;
@@ -45,5 +48,39 @@
         font-size: 19px;
       }
     }
+  }
+  .company-nav {
+    background: white;
+    border-top: 1px solid @gray;
+    border-bottom: 1px solid @gray;
+    nav {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+          float: left;
+          a {
+            display: block;
+            font-size: 16px;
+            padding: 20px 28px;
+            border-bottom: 5px solid transparent;
+            font-size: 16px;
+            &.active,
+            &:hover {
+              border-bottom-color: darken(@light-gray, 60%);
+            }
+            &:hover,
+            &:focus {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .company-sections {
+    background: white;
+    min-height: 400px;
   }
 }

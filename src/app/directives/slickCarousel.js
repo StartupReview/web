@@ -169,3 +169,30 @@ angular.module('startupReviewApp').directive('slickCarousel', [
     };
   }
 ]);
+
+angular.module('startupReviewApp').directive('onFinishRender', [
+  function() {
+    return {
+      restrict: 'A',
+      link: function(scope, element, attrs) {
+        if (scope.$last === true) {
+          return scope.$evalAsync(attrs.onFinishRender);
+        }
+      }
+    };
+  }
+]);
+
+angular.module('startupReviewApp').directive('backgroundImageUrl', [
+  function() {
+    return {
+      restrict: 'A',
+      scope: {
+        backgroundImageUrl: '='
+      },
+      link: function(scope, element) {
+        element.css('background-image', 'url(\'' + scope.backgroundImageUrl + '\')');
+      }
+    };
+  }
+]);

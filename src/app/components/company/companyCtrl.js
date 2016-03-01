@@ -44,6 +44,33 @@ angular.module('startupReviewApp').controller('companyCtrl', [
     function _getCompany() {
       $scope.loading = true;
 
+      $scope.sections = [{
+        name: 'Problem',
+        active: true
+      }, {
+        name: 'Solution'
+      }, {
+        name: 'Market'
+      }, {
+        name: 'Team'
+      }, {
+        name: 'Timing'
+      }, {
+        name: 'Business Model'
+      }, {
+        name: 'Traction'
+      }];
+
+      $scope.activateSection = function(section, $event) {
+        if ($event) $event.preventDefault();
+
+        _.each($scope.sections, function(sec) {
+          sec.active = false;
+        });
+
+        section.active = true;
+      };
+
       companyService.getById($stateParams.id)
         .then(function(company) {
           $scope.loading = false;

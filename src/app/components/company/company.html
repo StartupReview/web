@@ -11,8 +11,7 @@
     <div class="row clearfix">
       <div class="col-sm-7 company-slides col-sm-offset-1">
         <slick-carousel options="carouselOptions" trigger="true" slides="slides" class="slides-carousel" pre-slide="false">
-          <div class="slide" slick-template>
-            <p ng-bind-html="slide.url"></p>
+          <div class="slide" slick-template background-image-url="slide.url">
           </div>
         </slick-carousel>
       </div>
@@ -37,6 +36,24 @@
           <i class="fa fa-tag rotate-90"></i> {{ company.type }}
         </p>
       </div>
+    </div>
+  </div>
+  <div class="company-nav">
+    <div class="container">
+      <nav>
+        <ul>
+          <li ng-repeat="section in sections">
+            <a href="#" ng-class="{ active : section.active }" ng-click="activateSection(section, $event)">
+              {{ section.name }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="company-sections">
+    <div class="section" ng-repeat="section in sections">
+
     </div>
   </div>
 </div>

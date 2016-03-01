@@ -61,7 +61,9 @@ const LESSOPTIONS = {
   compress: ENV_PROD
 };
 
-const VENDOR_CSS = [];
+const VENDOR_CSS = [
+  BUILDDIR + '/bower_components/slick-carousel/slick/slick.css'
+];
 
 /* =========================================================================
  * Tasks
