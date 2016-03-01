@@ -20,7 +20,8 @@ angular.module('startupReviewApp').service('companyService', [
       },
       slides: [{
         url: 'https://s3.amazonaws.com/startupreview/github_slide1.png'
-      }]
+      }],
+      type: 'Market Platform'
     }, {
       id: '2',
       name: 'GitHub',
@@ -39,7 +40,8 @@ angular.module('startupReviewApp').service('companyService', [
       },
       slides: [{
         url: 'https://s3.amazonaws.com/startupreview/github_slide1.png'
-      }]
+      }],
+      type: 'Market Platform'
     }];
 
     function CompanyService() {
