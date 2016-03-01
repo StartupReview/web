@@ -1,6 +1,6 @@
 #home {
   .home-nav {
-    background: lighten(#EEE, 2%);
+    background: lighten(@light-gray, 2%);
     ul {
       margin: 0;
       padding: 0;
@@ -17,7 +17,7 @@
           border-bottom: 5px solid transparent;
           &.active,
           &:hover {
-            border-bottom-color: darken(#EEE, 60%);
+            border-bottom-color: darken(@light-gray, 60%);
           }
           &:hover {
             text-decoration: none;
@@ -29,11 +29,15 @@
   .companies {
     padding: 20px 0;
     .company {
+      display: block;
       padding: 10px;
       margin-bottom: 15px;
-      border: 1px solid #EEE;
+      border: 1px solid @light-gray;
       position: relative;
       border-radius: 4px;
+      &:hover {
+        border-color: lighten(@blue, 15%);
+      }
       .company-pic {
         float: left;
         border-radius: 4px;
@@ -74,7 +78,7 @@
         }
       }
       .reviews-count {
-        border-left: 1px solid #EEE;
+        border-left: 1px solid @light-gray;
         position: absolute;
         right: 0;
         top: 0;

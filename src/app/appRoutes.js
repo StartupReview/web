@@ -9,13 +9,18 @@ angular.module('startupReviewApp').config([
     }
 
     $urlRouterProvider.when('', '/');
-    $urlRouterProvider.otherwise('/404');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('home', {
         url: '/',
         templateUrl: '/app/components/home/home.html',
         controller: 'homeCtrl'
+      })
+      .state('startup', {
+        url: 'startups/:id',
+        templateUrl: '/app/components/company/company.html',
+        controller: 'companyCtrl'
       });
   }
 ]);

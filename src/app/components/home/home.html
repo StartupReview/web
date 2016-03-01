@@ -14,7 +14,7 @@
   </nav>
   <div class="container">
     <div class="companies">
-      <div class="company clearfix" ng-repeat="company in companies">
+      <a href="#" ui-sref="startup({ id : company.id })" class="company clearfix" ng-repeat="company in companies">
         <div class="company-pic">
           <img class="img-responsive" ng-src="{{ company.profilePic }}" alt="{{ company.name }}">
         </div>
@@ -49,7 +49,7 @@
         <div class="reviews-count">
           <i class="fa fa-file-o"></i> {{ company.reviews }}
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
