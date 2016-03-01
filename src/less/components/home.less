@@ -1,6 +1,6 @@
 #home {
   .home-nav {
-    background: lighten(@light-gray, 2%);
+    background: @gray-dark;
     ul {
       margin: 0;
       padding: 0;
@@ -12,9 +12,10 @@
         margin: 0;
         a {
           display: block;
-          padding: 20px;
-          margin: 0;
+          padding: 20px 4px;
+          margin: 0 14px;
           border-bottom: 5px solid transparent;
+          font-size: 16px;
           &.active,
           &:hover {
             border-bottom-color: darken(@light-gray, 60%);
@@ -29,10 +30,11 @@
   .companies {
     padding: 20px 0;
     .company {
+      background: white;
       display: block;
       padding: 10px;
       margin-bottom: 15px;
-      border: 1px solid @light-gray;
+      border: 1px solid @gray-medium;
       position: relative;
       border-radius: 4px;
       &:hover {
