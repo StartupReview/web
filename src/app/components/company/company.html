@@ -1,10 +1,32 @@
 <div id="company" class="clearfix">
   <div class="container">
-    <p class="center">
-      {{ company.name }}
-    </p>
-    <p class="center">
-      {{ company.shortDescription }}
-    </p>
+    <div class="company-name">
+      <h2 class="name center">
+        {{ company.name }}
+      </h2>
+      <p class="desc center">
+        {{ company.shortDescription }}
+      </p>
+    </div>
+    <div class="row clearfix">
+      <div class="col-sm-7 company-slides col-sm-offset-1">
+        <slick-carousel options="carouselOptions" trigger="true" slides="slides" class="slides-carousel" pre-slide="false">
+          <div class="slide" slick-template>
+            <p ng-bind-html="slide.url"></p>
+          </div>
+        </slick-carousel>
+      </div>
+      <div class="company-rating-info col-sm-3">
+        <p>
+          <span class="num">{{ company.reviews }}</span> Reviews
+        </p>
+        <p>
+          <span class="num">{{ company.votes }}</span> Votes
+        </p>
+        <button class="review-btn btn btn-primary">
+          Review this company
+        </button>
+      </div>
+    </div>
   </div>
 </div>

@@ -17,7 +17,10 @@ angular.module('startupReviewApp').service('companyService', [
         profilePic: 'https://s3.amazonaws.com/startupreview/joleedgerton.png',
         role: 'Design Lead',
         organization: 'Hubspot'
-      }
+      },
+      slides: [{
+        url: 'https://s3.amazonaws.com/startupreview/github_slide1.png'
+      }]
     }, {
       id: '2',
       name: 'GitHub',
@@ -33,7 +36,10 @@ angular.module('startupReviewApp').service('companyService', [
         profilePic: 'https://s3.amazonaws.com/startupreview/sarahjean.png',
         role: 'CEO',
         organization: 'BrewHouse'
-      }
+      },
+      slides: [{
+        url: 'https://s3.amazonaws.com/startupreview/github_slide1.png'
+      }]
     }];
 
     function CompanyService() {
