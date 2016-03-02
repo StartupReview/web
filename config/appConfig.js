@@ -1,6 +1,6 @@
 'use strict';
 
-const _ = require('underscore');
+const _ = require('underscore'); //jshint ignore:line
 
 const defaultSettings = {
   PORT: process.env.PORT || 2020,
@@ -22,7 +22,7 @@ const local = _.extend(_.clone(defaultSettings), {
   API: 'http://localhost:3001'
 });
 
-const test = _.extend(_.clone(defaultSettings), {
+const test = _.extend(_.clone(defaultSettings), { //jshint ignore:line
   ENV: 'test',
   API: 'http://localhost:3001'
 });

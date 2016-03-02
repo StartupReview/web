@@ -8,7 +8,7 @@ angular.module('startupReviewApp', [
 angular.module('startupReviewApp').run([
   '$rootScope',
   '$state',
-  '$stateParams',
-  function($rootScope, $state, $stateParams) {
+  function($rootScope, $state) {
+    $rootScope.$state = $state;
   }
 ]);

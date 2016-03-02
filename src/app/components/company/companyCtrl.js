@@ -2,8 +2,9 @@ angular.module('startupReviewApp').controller('companyCtrl', [
   '$scope',
   '$state',
   '$stateParams',
+  '$location',
   'companyService',
-  function($scope, $state, $stateParams, companyService) {
+  function($scope, $state, $stateParams, $location, companyService) {
     $scope.company = null;
 
     _getCompany();
@@ -39,37 +40,16 @@ angular.module('startupReviewApp').controller('companyCtrl', [
       // }]
     };
 
+    $scope.activateSection = function(section, $event) {
+      if ($event) $event.preventDefault();
+
+      $scope.currentSection = section;
+    };
+
     // private helpers
 
     function _getCompany() {
       $scope.loading = true;
-
-      $scope.sections = [{
-        name: 'Problem',
-        active: true
-      }, {
-        name: 'Solution'
-      }, {
-        name: 'Market'
-      }, {
-        name: 'Team'
-      }, {
-        name: 'Timing'
-      }, {
-        name: 'Business Model'
-      }, {
-        name: 'Traction'
-      }];
-
-      $scope.activateSection = function(section, $event) {
-        if ($event) $event.preventDefault();
-
-        _.each($scope.sections, function(sec) {
-          sec.active = false;
-        });
-
-        section.active = true;
-      };
 
       companyService.getById($stateParams.id)
         .then(function(company) {
@@ -79,10 +59,46 @@ angular.module('startupReviewApp').controller('companyCtrl', [
           $scope.slides = company.slides;
 
           $scope.carouselOptions.init();
+
+          _initSections();
         })
         .catch(function() {
           $state.go('home');
         });
+    }
+
+    function _initSections() {
+      $scope.sections = [{
+        id: $scope.company.id + '/problem',
+        name: 'Problem',
+        url: $location.absUrl() + '/problem'
+      }, {
+        id: $scope.company.id + '/solution',
+        name: 'Solution',
+        url: $location.absUrl() + '/solution'
+      }, {
+        id: $scope.company.id + '/market',
+        name: 'Market',
+        url: $location.absUrl() + '/market'
+      }, {
+        id: $scope.company.id + '/team',
+        name: 'Team',
+        url: $location.absUrl() + '/team'
+      }, {
+        id: $scope.company.id + '/timing',
+        name: 'Timing',
+        url: $location.absUrl() + '/timing'
+      }, {
+        id: $scope.company.id + '/business_model',
+        name: 'Business Model',
+        url: $location.absUrl() + '/business_model'
+      }, {
+        id: $scope.company.id + '/traction',
+        name: 'Traction',
+        url: $location.absUrl() + '/traction'
+      }];
+
+      $scope.currentSection = $scope.sections[0];
     }
   }
 ]);
