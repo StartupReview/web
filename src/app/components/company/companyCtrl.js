@@ -79,7 +79,7 @@ angular.module('startupReviewApp').controller('companyCtrl', [
         name: 'Traction',
         url: $location.absUrl() + '/traction'
       }];
-
+ 
       var activeSection;
       var locationParams = $location.search();
 
