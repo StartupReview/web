@@ -6,25 +6,21 @@ angular.module('startupReviewApp').directive('disqus', [
       replace: true,
       template: '<div id="disqus_thread"></div>',
       scope: {
-        identifier: '=',
-        url: '=',
-        title: '='
+        handle: '='
       },
       link: function(scope) {
-        scope.$watch('indentier', function(val) {
-          if (val) _resetDisqus();
-        });
+        scope.handle = scope.handle || {};
+        scope.handle.refresh = function(options) {
+          console.log('refresh');
+          _resetDisqus(options);
+        };
 
-        _resetDisqus();
+        // _resetDisqus();
 
-        function _resetDisqus() {
-          if (!scope.identifier || !scope.url) return;
+        function _resetDisqus(options) {
+          if (!options || !options.identifier || !options.url) return;
 
-          disqusService.reset({
-            identifier: scope.identifier,
-            url: scope.url,
-            title: scope.title
-          });
+          disqusService.reset(options);
         }
       }
     };

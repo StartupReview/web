@@ -54,12 +54,12 @@
   <div class="container">
     <div class="company-sections">
       <div class="section" ng-repeat="section in sections">
-        <div ng-if="currentSection.id === section.id">
+        <div ng-show="currentSection.id === section.id">
           <h3>
             {{ section.name }}
           </h3>
-          <div class="comments">
-            <disqus identifier="section.id" url="section.url" title="company.name"></disqus>
+          <div class="comments" ng-if="currentSection.id === section.id">
+            <disqus handle="disqusHandle"></disqus>
           </div>
         </div>
       </div>

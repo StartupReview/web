@@ -3,14 +3,17 @@ angular.module('startupReviewApp').controller('companyCtrl', [
   '$state',
   '$stateParams',
   '$location',
+  '$timeout',
   'companyService',
   'appConfig',
-  function($scope, $state, $stateParams, $location, companyService, appConfig) {
+  function($scope, $state, $stateParams, $location, $timeout, companyService, appConfig) {
     $scope.company = null;
 
     _getCompany();
 
     $scope.slides = [];
+
+    $scope.disqusHandle = {};
 
     $scope.carouselOptions = {
       slidesToShow: 1,
@@ -26,6 +29,14 @@ angular.module('startupReviewApp').controller('companyCtrl', [
       $scope.currentSection = section;
 
       $location.search('section', section.name);
+
+      $timeout(function() {
+        if ($scope.disqusHandle.refresh) $scope.disqusHandle.refresh({
+          identifier: $scope.currentSection.id,
+          url: $scope.currentSection.url,
+          title: $scope.company.title
+        });
+      });
     };
 
     // private helpers
@@ -53,33 +64,33 @@ angular.module('startupReviewApp').controller('companyCtrl', [
       $scope.sections = [{
         id: $scope.company.id + '/problem-' + appConfig.ENV,
         name: 'Problem',
-        url: $location.absUrl() + '/problem'
+        url: _getAbsoluteUrl() + '/problem'
       }, {
         id: $scope.company.id + '/solution-' + appConfig.ENV,
         name: 'Solution',
-        url: $location.absUrl() + '/solution'
+        url: _getAbsoluteUrl() + '/solution'
       }, {
         id: $scope.company.id + '/market-' + appConfig.ENV,
         name: 'Market',
-        url: $location.absUrl() + '/market'
+        url: _getAbsoluteUrl() + '/market'
       }, {
         id: $scope.company.id + '/team-' + appConfig.ENV,
         name: 'Team',
-        url: $location.absUrl() + '/team'
+        url: _getAbsoluteUrl() + '/team'
       }, {
         id: $scope.company.id + '/timing-' + appConfig.ENV,
         name: 'Timing',
-        url: $location.absUrl() + '/timing'
+        url: _getAbsoluteUrl() + '/timing'
       }, {
         id: $scope.company.id + '/business_model-' + appConfig.ENV,
         name: 'Business Model',
-        url: $location.absUrl() + '/business_model'
+        url: _getAbsoluteUrl() + '/business_model'
       }, {
         id: $scope.company.id + '/traction-' + appConfig.ENV,
         name: 'Traction',
-        url: $location.absUrl() + '/traction'
+        url: _getAbsoluteUrl() + '/traction'
       }];
- 
+
       var activeSection;
       var locationParams = $location.search();
 
@@ -92,6 +103,16 @@ angular.module('startupReviewApp').controller('companyCtrl', [
       activeSection = activeSection || $scope.sections[0];
 
       $scope.activateSection(activeSection);
+    }
+
+    function _getAbsoluteUrl() {
+      var url = $location.absUrl();
+
+      if (url.indexOf('?') > 0) {
+        url = url.split('?')[0];
+      }
+
+      return url;
     }
   }
 ]);
