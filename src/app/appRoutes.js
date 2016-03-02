@@ -18,9 +18,10 @@ angular.module('startupReviewApp').config([
         controller: 'homeCtrl'
       })
       .state('startup', {
-        url: '/startups/:id',
+        url: '/startups/:id?section',
         templateUrl: '/app/components/company/company.html',
-        controller: 'companyCtrl'
+        controller: 'companyCtrl',
+        reloadOnSearch: false
       });
   }
 ]);

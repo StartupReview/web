@@ -41,6 +41,8 @@ angular.module('startupReviewApp').service('disqusService', [
 
         $window.enableDisqus.loaded = true;
 
+        console.log('config', config);
+
         var interval = setInterval(function() {
           if ($window.DISQUS) {
             DISQUS.reset({
@@ -51,7 +53,7 @@ angular.module('startupReviewApp').service('disqusService', [
                 this.page.title = config.title;
               }
             });
-            
+
             clearInterval(interval);
           }
         }, 500);
