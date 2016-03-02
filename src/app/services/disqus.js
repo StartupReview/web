@@ -19,11 +19,7 @@ angular.module('startupReviewApp').service('disqusService', [
 
     //private helpers
     function _enableDisqus(config) {
-      console.log('GET DISQUS', config);
-
       if ($window.enableDisqus.loaded) {
-        console.log('reset', config);
-
         DISQUS.reset({
           reload: true,
           config: function() {
@@ -40,8 +36,6 @@ angular.module('startupReviewApp').service('disqusService', [
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 
         $window.enableDisqus.loaded = true;
-
-        console.log('config', config);
 
         var interval = setInterval(function() {
           if ($window.DISQUS) {

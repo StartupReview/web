@@ -39,7 +39,6 @@ angular.module('startupReviewApp').directive('slickCarousel', [
         scope.onFinishRender = function() {
           $timeout(function() {
             var $slickWrapper = element.find('.slick-wrapper');
-            //console.log('SLICK - on finished render');
             $slickWrapper.slick(scope.options);
           });
         };
@@ -105,9 +104,6 @@ angular.module('startupReviewApp').directive('slickCarousel', [
         }
 
         function init() {
-
-          //console.log('INIT');
-
           if (isInitialized) {
             destroySlick(function() {
               initializeWrapper(function() {
@@ -116,7 +112,6 @@ angular.module('startupReviewApp').directive('slickCarousel', [
 
                 if (!scope.trigger) {
                   var $slickWrapper = element.find('.slick-wrapper');
-                  //console.log('SLICK');
                   $slickWrapper.slick(scope.options);
                 }
               });
@@ -128,7 +123,6 @@ angular.module('startupReviewApp').directive('slickCarousel', [
 
               if (!scope.trigger) {
                 var $slickWrapper = element.find('.slick-wrapper');
-                //console.log('SLICK');
                 $slickWrapper.slick(scope.options);
               }
             });
@@ -139,17 +133,11 @@ angular.module('startupReviewApp').directive('slickCarousel', [
           if (!val || !val.length) return;
 
           if (isInitialized || !scope.trigger) {
-            //console.log('REINIT');
-
             init();
           }
         });
 
         function destroySlick(next) {
-          //console.log('DELETE SLICK');
-
-          //scope.slides.slice(0, scope.slides.length);
-
           var $slickWrapper = element.find('.slick-wrapper');
 
           return $timeout(function() {

@@ -11,11 +11,8 @@ angular.module('startupReviewApp').directive('disqus', [
       link: function(scope) {
         scope.handle = scope.handle || {};
         scope.handle.refresh = function(options) {
-          console.log('refresh');
           _resetDisqus(options);
         };
-
-        // _resetDisqus();
 
         function _resetDisqus(options) {
           if (!options || !options.identifier || !options.url) return;
