@@ -31,8 +31,9 @@
     "gulp-uglifyjs": "0.6.0",
     "gulp-watch": "1.2.0",
     "jshint-stylish": "0.4.0",
-    "node-uuid": "1.4.3",
-    "gulp-rename": "1.2.2"
+    "gulp-rename": "1.2.2",
+    "fontcustom": "0.0.3",
+    "node-uuid": "1.4.3"
   },
   "scripts": {
     "start": "node ./server.js"

@@ -83,6 +83,20 @@ gulp.task('clean', next => {
   childProcess.exec(`rm -rf ${BUILDDIR}`, next);
 });
 
+/**
+ * Fonts
+ */
+gulp.task('fonts', () => {
+  const fontcustom = require('fontcustom');
+
+  return fontcustom({
+    path: 'resources/font-glyphs',
+    output: 'src/font-glyphs',
+    noisy: true,
+    force: true
+  });
+});
+
 // Copy src folder to build directory
 gulp.task('copy', ['clean', 'copy-bower', 'copy-vendor'], () => {
   //exclude bower_compoents js files

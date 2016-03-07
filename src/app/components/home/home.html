@@ -1,19 +1,38 @@
 <div id="home" class="clearfix">
-  <nav class="home-nav">
-    <ul class="clearfix center">
-      <li>
-        <a class="active" href="#">Trending</a>
-      </li>
-      <li>
-        <a href="#">Top</a>
-      </li>
-      <li>
-        <a href="#">New</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="home-hero clearfix">
+    <div class="container">
+      <h1 class="center">Feedback Resource for Building Companies</h1>
+      <h2 class="center">A community for sharing and exploring issues related to changing the world</h2>
+      <div class="icons clearfix row">
+        <div class="icon col-sm-4">
+          <img src="images/browse.png" class="img-responsive">
+          <p class="center">
+            Browse Companies
+          </p>
+        </div>
+        <div class="icon col-sm-4">
+          <img src="images/explore.png" class="img-responsive">
+          <p class="center">
+            Explore Issues
+          </p>
+        </div>
+        <div class="icon col-sm-4">
+          <img src="images/feedback.png" class="img-responsive">
+          <p class="center">
+            Get Feedback
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div class="companies">
+      <div class="companies-intro">
+        <h3 class="center">Browse who we've added so far</h3>
+        <p class="center">
+          <a href="mailto:">Let us know</a> if you'd like to be added
+        </p>
+      </div>
       <a href="#" ui-sref="startup({ id : company.id })" class="company clearfix" ng-repeat="company in companies">
         <div class="company-pic">
           <img class="img-responsive" ng-src="{{ company.profilePic }}" alt="{{ company.name }}">
@@ -23,31 +42,11 @@
             {{ company.name }}
           </p>
           <p class="desc">
-            {{ company.shortDescription }}
+            {{ company.description }}
           </p>
           <p class="location">
             {{ company.location }}
           </p>
-        </div>
-        <div class="author-pic">
-          <img class="img-responsive" ng-src="{{ company.author.profilePic }}">
-        </div>
-        <div class="author-info col-sm-2">
-          <p class="name">
-            {{ company.author.firstName + ' ' + company.author.lastName }}
-          </p>
-          <p class="role">
-            {{ company.author.role + ' @' + company.author.organization }}
-          </p>
-        </div>
-        <div class="votes col-sm-1">
-          <i class="fa fa-arrow-up"></i> {{ company.votes }}
-        </div>
-        <div class="description col-sm-3">
-          {{ company.description }}
-        </div>
-        <div class="reviews-count">
-          <i class="fa fa-file-o"></i> {{ company.reviews }}
         </div>
       </a>
     </div>
