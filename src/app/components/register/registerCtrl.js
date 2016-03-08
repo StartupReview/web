@@ -13,7 +13,7 @@ angular.module('startupReviewApp').controller('registerCtrl', [
 
       if (!form.$valid) return;
 
-      registerService.register()
+      registerService.register($scope.form.email)
         .then(function() {
           $state.go('home');
         })
