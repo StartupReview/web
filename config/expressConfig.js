@@ -6,6 +6,7 @@ const appConfig = require('./appConfig');
 
 //middleware
 const compression = require('compression');
+const bodyParser = require('body-parser');
 const ssl = require('../middleware/ssl');
 const headers = require('../middleware/headers');
 const notFound = require('../middleware/notFound');
@@ -25,13 +26,9 @@ function configure() {
 }
 
 function loadMiddleware(app) {
-  app.use(compression());
   app.use(ssl(appConfig));
   app.use(headers(appConfig));
-
-  app.use(compression());
-  app.use(ssl(appConfig));
-  app.use(headers(appConfig));
+  app.use(bodyParser.json());
   app.use(staticFiles(appConfig.BUILD_DIR));
 
   router.route(app);
