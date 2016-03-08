@@ -1,7 +1,7 @@
 angular
   .module('startupReviewApp').service('registerService', [
-    'cookieService',
-    (cookieService) => {
+    '$q',
+    'cookieService', ($q, cookieService) => {
       var COOKIE_NAME = 'registered';
 
       function RegisterService() {}
@@ -13,8 +13,14 @@ angular
       };
 
       RegisterService.prototype.register = function() {
-        cookieService.set(COOKIE_NAME, {
-          registered: true
+        return $q(function(resolve, reject) {
+          var created = cookieService.set(COOKIE_NAME, true);
+
+          if (created) {
+            return resolve(created);
+          } else {
+            return reject(new Error('Error registering'));
+          }
         });
       };
 

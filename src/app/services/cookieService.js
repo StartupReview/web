@@ -20,8 +20,8 @@ angular
         if (!key) throw new Error('cookieService - set - key is required');
         if (!value) throw new Error('cookieService - set - value is required');
 
-        // var domain = config.enableCookieDomain || false;
-        // var secure = config.enableSecureCookie || false;
+        var domain = appConfig.ENABLE_COOKIE_DOMAIN || false;
+        var secure = appConfig.ENABLE_SECURE_COOKIE || false;
 
         var expires = 'Fri, 31 Dec 9999 23:59:59 GMT';
 
@@ -30,8 +30,8 @@ angular
 
         var cookie = key + '=' + value + ';expires=' + expires;
 
-        cookie += ';domain=' + appConfig.DOMAIN;
-        // if (secure) cookie += ';secure';
+        if (domain) cookie += ';domain=' + appConfig.DOMAIN;
+        if (secure) cookie += ';secure';
 
         document.cookie = cookie;
 
@@ -41,7 +41,7 @@ angular
       CookieService.prototype.remove = function(key) {
         if (!key) throw new Error('cookieService - remove - key is required');
 
-        // var domain = config.enableCookieDomain || false;
+        var domain = appConfig.ENABLE_COOKIE_DOMAIN || false;
 
         //update the cookie's expiration date to date in the past
         var expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
@@ -50,7 +50,7 @@ angular
 
         var cookie = key + '=;expires=' + expires;
 
-        // if (domain) cookie += `;domain=${DOMAIN}`;
+        if (domain) cookie += ';domain=' + appConfig.DOMAIN;
 
         document.cookie = cookie;
 

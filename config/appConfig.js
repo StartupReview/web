@@ -5,17 +5,23 @@ const _ = require('underscore'); //jshint ignore:line
 const defaultSettings = {
   PORT: process.env.PORT || 2020,
   BUILD_DIR: 'build',
-  DOMAIN: 'reviewstartups.com'
+  DOMAIN: 'reviewstartups.com',
+  ENABLE_COOKIE_DOMAIN: false,
+  ENABLE_SECURE_COOKIE: false
 };
 
 const production = _.extend(_.clone(defaultSettings), {
   ENV: 'production',
-  API: 'https://api.startupreview.com'
+  API: 'https://api.startupreview.com',
+  ENABLE_COOKIE_DOMAIN: true,
+  ENABLE_SECURE_COOKIE: true
 });
 
 const development = _.extend(_.clone(defaultSettings), {
   ENV: 'development',
-  API: 'https://api-dev.startupreview.com'
+  API: 'https://api-dev.startupreview.com',
+  ENABLE_COOKIE_DOMAIN: true,
+  ENABLE_SECURE_COOKIE: true
 });
 
 const local = _.extend(_.clone(defaultSettings), {
