@@ -41,7 +41,6 @@ const UGLIFYOPTIONS = {
 };
 
 const VENDOR_JS = [
-  BUILDDIR + '/bower_components/console-polyfill/index.js',
   BUILDDIR + '/bower_components/angular/angular.js',
   BUILDDIR + '/bower_components/bootstrap/dist/js/bootstrap.js',
   BUILDDIR + '/bower_components/angular-resource/angular-resource.js',
@@ -50,18 +49,8 @@ const VENDOR_JS = [
   BUILDDIR + '/bower_components/underscore/underscore.js',
   BUILDDIR + '/bower_components/angular-animate/angular-animate.js',
   BUILDDIR + '/bower_components/angular-sanitize/angular-sanitize.js',
-  BUILDDIR + '/bower_components/angular-ui-select/dist/select.js',
-  BUILDDIR + '/bower_components/angular-scroll/angular-scroll.js',
-  BUILDDIR + '/bower_components/angular-local-storage/dist/angular-local-storage.js',
-  BUILDDIR + '/bower_components/textAngular/src/textAngular.js',
-  BUILDDIR + '/bower_components/textAngular/src/textAngularSetup.js',
-  BUILDDIR + '/bower_components/rangy/rangy-core.js',
-  BUILDDIR + '/bower_components/rangy/rangy-selectionsaverestore.js',
   BUILDDIR + '/bower_components/moment/moment.js',
-  BUILDDIR + '/bower_components/toastr/toastr.js',
-  BUILDDIR + '/bower_components/bootstrap-daterangepicker/daterangepicker.js',
-  BUILDDIR + '/vendor/js/rfc6902.js',
-  BUILDDIR + '/vendor/js/ng-bs-animated-button.js'
+  BUILDDIR + '/bower_components/slick-carousel/slick/slick.js'
 ];
 
 //css
@@ -72,7 +61,9 @@ const LESSOPTIONS = {
   compress: ENV_PROD
 };
 
-const VENDOR_CSS = [];
+const VENDOR_CSS = [
+  BUILDDIR + '/bower_components/slick-carousel/slick/slick.css'
+];
 
 /* =========================================================================
  * Tasks
@@ -90,6 +81,20 @@ gulp.task('?', next => {
  */
 gulp.task('clean', next => {
   childProcess.exec(`rm -rf ${BUILDDIR}`, next);
+});
+
+/**
+ * Fonts
+ */
+gulp.task('fonts', () => {
+  const fontcustom = require('fontcustom');
+
+  return fontcustom({
+    path: 'resources/font-glyphs',
+    output: 'src/font-glyphs',
+    noisy: true,
+    force: true
+  });
 });
 
 // Copy src folder to build directory

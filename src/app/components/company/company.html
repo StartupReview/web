@@ -1,0 +1,68 @@
+<div id="company" class="clearfix">
+  <div class="container">
+    <div class="company-name">
+      <h2 class="name center">
+        {{ company.name }}
+      </h2>
+      <p class="desc center">
+        {{ company.shortDescription }}
+      </p>
+    </div>
+    <div class="row clearfix">
+      <div class="col-sm-7 company-slides col-sm-offset-1">
+        <slick-carousel options="carouselOptions" trigger="true" slides="slides" current-index="currentIndex" class="slides-carousel" pre-slide="false">
+          <div class="slide" slick-template background-image-url="slide.url">
+          </div>
+        </slick-carousel>
+      </div>
+      <div class="company-rating-info col-sm-3">
+        <p>
+          <span class="num">{{ company.reviews }}</span> Reviews
+        </p>
+        <p>
+          <span class="num">{{ company.votes }}</span> Votes
+        </p>
+        <button class="review-btn btn btn-primary">
+          Review this company
+        </button>
+      </div>
+    </div>
+    <div class="row clearfix company-location-info">
+      <div class="col-sm-8 col-sm-offset-1">
+        <p class="location">
+          <i class="fa fa-map-marker"></i> {{ company.location }}
+        </p>
+        <p class="type">
+          <i class="fa fa-tag rotate-90"></i> {{ company.type }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="company-nav">
+    <div class="container">
+      <nav>
+        <ul>
+          <li ng-repeat="section in sections">
+            <a href="#" ng-class="{ active : currentSection.id === section.id }" ng-click="activateSection(section, $event)">
+              {{ section.name }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="container">
+    <div class="company-sections">
+      <div class="section" ng-repeat="section in sections">
+        <div ng-show="currentSection.id === section.id">
+          <h3>
+            {{ section.name }}
+          </h3>
+          <div class="comments" ng-if="currentSection.id === section.id">
+            <disqus handle="disqusHandle"></disqus>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

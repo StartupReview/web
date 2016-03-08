@@ -36,6 +36,7 @@
     "afterEach",
     "controller",
     "process",
-    "FormData"
+    "FormData",
+    "DISQUS"
   ]
 }

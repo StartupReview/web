@@ -1,0 +1,85 @@
+#company {
+  .company-name {
+    padding: 30px 0 50px;
+    .name {
+      color: @gray-darker;
+      font-size: 32px;
+    }
+    .desc {
+      color: @gray-dark;
+      font-size: 16px;
+    }
+  }
+  .company-slides {
+    position: relative;
+    .slide {
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+  .company-rating-info {
+    padding-top: 75px;
+    padding-left: 25px;
+    p {
+      font-size: 22px;
+      margin-bottom: 50px;
+    }
+    .num {
+      font-weight: bold;
+    }
+    .review-btn {
+      text-transform: uppercase;
+      padding: 16px;
+    }
+  }
+  .company-location-info {
+    padding: 35px 0;
+    margin-bottom: 50px;
+    p {
+      display: inline-block;
+      font-size: 16px;
+      &:first-child {
+        margin-right: 40px;
+      }
+      i {
+        margin-right: 6px;
+        color: @gray-darker;
+        font-size: 19px;
+      }
+    }
+  }
+  .company-nav {
+    background: white;
+    border-top: 1px solid @gray;
+    border-bottom: 1px solid @gray;
+    nav {
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+          float: left;
+          a {
+            display: block;
+            font-size: 16px;
+            padding: 20px 28px;
+            border-bottom: 5px solid transparent;
+            font-size: 16px;
+            &.active,
+            &:hover {
+              border-bottom-color: darken(@gray-light, 60%);
+            }
+            &:hover,
+            &:focus {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .company-sections {
+    min-height: 400px;
+  }
+}

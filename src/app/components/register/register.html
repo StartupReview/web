@@ -1,0 +1,21 @@
+<div id="register" class="clearfix">
+  <div class="beta-sign">
+    <span>Beta</span>
+  </div>
+  <div class="register-header">
+    <h2 class="center">Welcome to Startup Review</h2>
+  </div>
+  <div class="register-form col-sm-4 col-sm-offset-4">
+    <p class="text center">
+      Please enter your email address for access.
+    </p>
+    <form name="registerForm" novalidate>
+      <div class="email form-group" ng-class="{ 'has-error' : !registerForm.email.$valid && submitted }">
+        <input class="form-control" type="text" name="email" placeholder="e.g. dreadpiraterob@darknet.com" ng-model="form.email" required>
+      </div>
+      <button class="btn btn-secondary" type="submit" ng-click="register(registerForm)">
+        <i class="fa fa-arrow-right"></i>
+      </button>
+    </form>
+  </div>
+</div>
