@@ -1,16 +1,14 @@
 'use strict';
 
-const NODE_ENV = process.env.WERCKER_GIT_BRANCH || process.env.NODE_ENV || process.argv[3];
-const ENV = setupEnv(NODE_ENV);
-const ENV_PROD = (ENV === 'production');
+const appConfig = require('./config/appConfig');
+
+const ENV_PROD = (appConfig.ENV === 'production');
 
 const env = require('node-env-file');
 
-if (ENV === 'local') {
+if (appConfig.ENV === 'local') {
   env(__dirname + '/.env');
 }
-
-const appConfig = require('./config/appConfig')[ENV];
 
 const childProcess = require('child_process');
 const concat = require('gulp-concat');
@@ -28,7 +26,7 @@ const wrap = require('gulp-wrap');
 
 require('gulp-task-list')(gulp);
 
-console.log('\n\nENV: ' + ENV + '\n\n');
+console.log('\n\nENV: ' + appConfig.ENV + '\n\n');
 
 const BUILDDIR = 'build';
 
@@ -316,18 +314,4 @@ function _replace(stream) {
   }
 
   return stream;
-}
-
-function setupEnv(env) {
-  // allow passing name as an argument
-  if (env && env.indexOf('-') === 0) env = env.substring(1);
-
-  // production
-  if (env === 'master' || env === 'prod' || env === 'production') return 'production';
-  // development
-  else if (env === 'dev' || env === 'development') return 'development';
-  // local
-  else if (env === 'local') return 'local';
-  // default
-  else return 'development';
 }
