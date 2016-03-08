@@ -1,7 +1,7 @@
 angular
   .module('startupReviewApp').service('cookieService', [
     'appConfig',
-    (appConfig) => {
+    function(appConfig) {
       //https://developer.mozilla.org/en-US/docs/Web/API/document.cookie
 
       function CookieService() {}

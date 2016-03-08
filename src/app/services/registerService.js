@@ -2,7 +2,8 @@ angular
   .module('startupReviewApp').service('registerService', [
     '$q',
     'cookieService',
-    'mailchimpService', ($q, cookieService, mailchimpService) => {
+    'mailchimpService',
+    function($q, cookieService, mailchimpService) {
       var COOKIE_NAME = 'registered';
 
       function RegisterService() {}

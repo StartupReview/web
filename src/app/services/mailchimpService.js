@@ -3,7 +3,7 @@ angular
     '$q',
     '$http',
     'appConfig',
-    ($q, $http, appConfig) => {
+    function($q, $http, appConfig) {
 
       var LIST_IDS = {
         STARTUP_REVIEW_BETA: '9f53b207f1'
