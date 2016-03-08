@@ -4,6 +4,10 @@ const NODE_ENV = process.env.WERCKER_GIT_BRANCH || process.env.NODE_ENV || proce
 const ENV = setupEnv(NODE_ENV);
 const ENV_PROD = (ENV === 'production');
 
+const env = require('node-env-file');
+
+env(__dirname + '/.env');
+
 const appConfig = require('./config/appConfig')[ENV];
 
 const childProcess = require('child_process');
