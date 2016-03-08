@@ -7,7 +7,8 @@ const defaultSettings = {
   BUILD_DIR: 'build',
   DOMAIN: 'reviewstartups.com',
   ENABLE_COOKIE_DOMAIN: false,
-  ENABLE_SECURE_COOKIE: false
+  ENABLE_SECURE_COOKIE: false,
+  MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY
 };
 
 const production = _.extend(_.clone(defaultSettings), {

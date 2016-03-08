@@ -1,7 +1,9 @@
 angular
   .module('startupReviewApp').service('registerService', [
     '$q',
-    'cookieService', ($q, cookieService) => {
+    'cookieService',
+    'mailchimpService',
+    function($q, cookieService, mailchimpService) {
       var COOKIE_NAME = 'registered';
 
       function RegisterService() {}
@@ -12,15 +14,23 @@ angular
         return cookie ? true : false;
       };
 
-      RegisterService.prototype.register = function() {
+      RegisterService.prototype.register = function(email) {
         return $q(function(resolve, reject) {
-          var created = cookieService.set(COOKIE_NAME, true);
+          mailchimpService.subscribeToList(mailchimpService.LIST_IDS.STARTUP_REVIEW_BETA, {
+              email: email
+            })
+            .then(function(response) {
+              console.log('RESPONSE', response);
 
-          if (created) {
-            return resolve(created);
-          } else {
-            return reject(new Error('Error registering'));
-          }
+              var created = cookieService.set(COOKIE_NAME, true);
+
+              if (created) {
+                return resolve(created);
+              } else {
+                return reject(new Error('Error registering'));
+              }
+            })
+            .catch(reject);
         });
       };
 
