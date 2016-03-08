@@ -6,7 +6,9 @@ const ENV_PROD = (ENV === 'production');
 
 const env = require('node-env-file');
 
-env(__dirname + '/.env');
+if (ENV === 'local') {
+  env(__dirname + '/.env');
+}
 
 const appConfig = require('./config/appConfig')[ENV];
 
