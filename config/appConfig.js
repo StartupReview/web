@@ -4,7 +4,8 @@ const _ = require('underscore'); //jshint ignore:line
 
 const defaultSettings = {
   PORT: process.env.PORT || 2020,
-  BUILD_DIR: 'build'
+  BUILD_DIR: 'build',
+  DOMAIN: 'reviewstartups.com'
 };
 
 const production = _.extend(_.clone(defaultSettings), {

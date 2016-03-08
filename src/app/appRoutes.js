@@ -17,6 +17,11 @@ angular.module('startupReviewApp').config([
         templateUrl: '/app/components/home/home.html',
         controller: 'homeCtrl'
       })
+      .state('register', {
+        url: '/register',
+        templateUrl: '/app/components/register/register.html',
+        controller: 'registerCtrl'
+      })
       .state('startup', {
         url: '/startups/:id?section',
         templateUrl: '/app/components/company/company.html',
