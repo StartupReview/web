@@ -11,6 +11,7 @@ const defaultSettings = {
   DOMAIN: 'reviewstartups.com',
   ENABLE_COOKIE_DOMAIN: false,
   ENABLE_SECURE_COOKIE: false,
+  MAILCHIMP_USERNAME: 'thestartupreview',
   MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
   MAILCHIMP_API_DC: 'us12'
 };

@@ -4,7 +4,7 @@ const request = require('request');
 
 const appConfig = require('../appConfig');
 
-const MAILCHIMP_BASE_URL = `https://${appConfig.MAILCHIMP_API_DC}.api.mailchimp.com/3.0`;
+const MAILCHIMP_BASE_URL = `${appConfig.MAILCHIMP_API_DC}.api.mailchimp.com/3.0`;
 const ENDPOINTS = {
   SUBSCRIBE_TO_LIST: '/lists/:listId/members'
 };
@@ -19,7 +19,16 @@ class MailChimpApi {
 
     let endpoint = ENDPOINTS.SUBSCRIBE_TO_LIST.replace(':listId', listId);
 
-    return _post(endpoint, null, options, next);
+    return _post(endpoint, null, {
+      email_address: options.email, //jshint ignore:line
+      status: 'subscribed'
+    }, (error, response, body) => {
+      if (error) return next(error);
+      if (response.statusCode === 400 && body.title === 'Member Exists') return next(null, response); //just eat the error if they've already subscribed
+      if (response.statusCode !== 200) return next(new Error(body.title));
+
+      return next(null, response);
+    });
   }
 }
 
@@ -34,7 +43,8 @@ function _post(endpoint, params, body, next) {
     url: fullUrl,
     method: 'POST',
     qs: params,
-    body: body
+    body: body,
+    json: true
   }, next);
 }
 
@@ -43,7 +53,9 @@ function _getUrl(endpoint) {
 
   if (endpoint.indexOf('/') === 0) endpoint = endpoint.substring(1, endpoint.length);
 
-  let fullUrl = `${MAILCHIMP_BASE_URL}/${endpoint}`;
+  let fullUrl = `https://${appConfig.MAILCHIMP_USERNAME}:${appConfig.MAILCHIMP_API_KEY}@${MAILCHIMP_BASE_URL}/${endpoint}`;
+
+  console.log('FULL URL', fullUrl);
 
   return fullUrl;
 }

@@ -1,14 +1,16 @@
 'use strict';
 
-const appConfig = require('./config/appConfig');
-
-const ENV_PROD = (appConfig.ENV === 'production');
+const NODE_ENV = process.env.WERCKER_GIT_BRANCH || process.env.NODE_ENV || process.argv[3].replace('-', '');
 
 const env = require('node-env-file');
 
-if (appConfig.ENV === 'local') {
+if (NODE_ENV === 'local') {
   env(__dirname + '/.env');
 }
+
+const appConfig = require('./config/appConfig');
+
+const ENV_PROD = (appConfig.ENV === 'production');
 
 const childProcess = require('child_process');
 const concat = require('gulp-concat');
