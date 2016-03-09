@@ -13,14 +13,16 @@ const defaultSettings = {
   ENABLE_SECURE_COOKIE: false,
   MAILCHIMP_USERNAME: 'thestartupreview',
   MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
-  MAILCHIMP_API_DC: 'us12'
+  MAILCHIMP_API_DC: 'us12',
+  GOOGLE_ANALYTICS: 'xxxxxxxxxx'
 };
 
 const production = _.extend(_.clone(defaultSettings), {
   ENV: 'production',
   API: 'https://api.startupreview.com',
   ENABLE_COOKIE_DOMAIN: true,
-  ENABLE_SECURE_COOKIE: true
+  ENABLE_SECURE_COOKIE: true,
+  GOOGLE_ANALYTICS: 'UA-74655471-1'
 });
 
 const development = _.extend(_.clone(defaultSettings), {
