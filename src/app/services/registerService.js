@@ -5,7 +5,7 @@ angular
     'mailchimpService',
     'appConfig',
     function($q, cookieService, mailchimpService, appConfig) {
-      var COOKIE_NAME = appConfig.NAME.toLowerCase() + '-registered';
+      var COOKIE_NAME = '_' + appConfig.NAME.toLowerCase() + 'Registered';
 
       function RegisterService() {}
 
@@ -23,7 +23,7 @@ angular
             .then(function(response) {
               console.log('RESPONSE', response);
 
-              var created = cookieService.set(COOKIE_NAME, 'registered');
+              var created = cookieService.set(COOKIE_NAME, 1);
 
               if (created) {
                 return resolve(created);
