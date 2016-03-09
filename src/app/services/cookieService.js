@@ -42,11 +42,7 @@ angular
         if (!key) throw new Error('cookieService - remove - key is required');
 
         var domain = appConfig.ENABLE_COOKIE_DOMAIN || false;
-
-        //update the cookie's expiration date to date in the past
-        var expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
-
-        key = encodeURIComponent(key);
+        var expires = 'Thu, 01 Jan 1970 00:00:00 GMT'; //update the cookie's expiration date to date in the past
 
         var cookie = key + '=;expires=' + expires;
 

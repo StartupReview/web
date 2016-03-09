@@ -22,7 +22,7 @@ angular
             .then(function(response) {
               console.log('RESPONSE', response);
 
-              var created = cookieService.set(COOKIE_NAME, true);
+              var created = cookieService.set(COOKIE_NAME, 'registered');
 
               if (created) {
                 return resolve(created);

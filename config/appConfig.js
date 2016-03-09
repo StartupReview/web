@@ -23,7 +23,7 @@ const production = _.extend(_.clone(defaultSettings), {
   ENABLE_COOKIE_DOMAIN: true,
   ENABLE_SECURE_COOKIE: true,
   GOOGLE_ANALYTICS: 'UA-74655471-1',
-  DOMAIN: 'www.reviewstartups.com'
+  DOMAIN: 'http://www.reviewstartups.com'
 });
 
 const development = _.extend(_.clone(defaultSettings), {
@@ -31,19 +31,19 @@ const development = _.extend(_.clone(defaultSettings), {
   API: 'https://api-dev.startupreview.com',
   ENABLE_COOKIE_DOMAIN: true,
   ENABLE_SECURE_COOKIE: true,
-  DOMAIN: 'www-dev.reviewstartups.com'
+  DOMAIN: 'http://www-dev.reviewstartups.com'
 });
 
 const local = _.extend(_.clone(defaultSettings), {
   ENV: 'local',
   API: 'http://localhost:3001',
-  DOMAIN: `localhost:${PORT}`
+  DOMAIN: `http://localhost:${PORT}`
 });
 
 const test = _.extend(_.clone(defaultSettings), { //jshint ignore:line
   ENV: 'test',
   API: 'http://localhost:3001',
-  DOMAIN: `localhost:${PORT}`
+  DOMAIN: `http://localhost:${PORT}`
 });
 
 const ENVS = {
