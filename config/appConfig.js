@@ -61,4 +61,9 @@ function _setupEnv(env) {
   else return 'development';
 }
 
-module.exports = ENVS[ENV];
+const appConfig = ENVS[ENV];
+
+console.log('APP CONFIG');
+console.log(appConfig);
+
+module.exports = appConfig;
