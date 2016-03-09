@@ -7,8 +7,10 @@ const ENV = _setupEnv(NODE_ENV);
 const PORT = process.env.PORT || 2020;
 
 const defaultSettings = {
+  NAME: 'StartReview',
   PORT: PORT,
   BUILD_DIR: 'build',
+  COOKIE_DOMAIN: '.reviewstartups.com',
   ENABLE_COOKIE_DOMAIN: false,
   ENABLE_SECURE_COOKIE: false,
   MAILCHIMP_USERNAME: 'thestartupreview',
@@ -22,28 +24,24 @@ const production = _.extend(_.clone(defaultSettings), {
   API: 'https://api.startupreview.com',
   ENABLE_COOKIE_DOMAIN: true,
   ENABLE_SECURE_COOKIE: true,
-  GOOGLE_ANALYTICS: 'UA-74655471-1',
-  DOMAIN: 'http://www.reviewstartups.com'
+  GOOGLE_ANALYTICS: 'UA-74655471-1'
 });
 
 const development = _.extend(_.clone(defaultSettings), {
   ENV: 'development',
   API: 'https://api-dev.startupreview.com',
   ENABLE_COOKIE_DOMAIN: true,
-  ENABLE_SECURE_COOKIE: true,
-  DOMAIN: 'http://www-dev.reviewstartups.com'
+  ENABLE_SECURE_COOKIE: true
 });
 
 const local = _.extend(_.clone(defaultSettings), {
   ENV: 'local',
-  API: 'http://localhost:3001',
-  DOMAIN: `http://localhost:${PORT}`
+  API: 'http://localhost:3001'
 });
 
 const test = _.extend(_.clone(defaultSettings), { //jshint ignore:line
   ENV: 'test',
-  API: 'http://localhost:3001',
-  DOMAIN: `http://localhost:${PORT}`
+  API: 'http://localhost:3001'
 });
 
 const ENVS = {

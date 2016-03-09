@@ -16,22 +16,22 @@ angular
         return cookieValue || null;
       };
 
-      CookieService.prototype.set = function(key, value) {
+      CookieService.prototype.set = function(key, value, expires) {
         if (!key) throw new Error('cookieService - set - key is required');
-        if (!value) throw new Error('cookieService - set - value is required');
 
         var domain = appConfig.ENABLE_COOKIE_DOMAIN || false;
         var secure = appConfig.ENABLE_SECURE_COOKIE || false;
 
-        var expires = 'Fri, 31 Dec 9999 23:59:59 GMT';
+        expires = expires || 'Fri, 31 Dec 9999 23:59:59 GMT';
 
         key = key;
         value = encodeURIComponent(value);
 
-        var cookie = key + '=' + value + ';expires=' + expires;
+        var cookie = key + '=' + (value ? value : '') + ';expires=' + expires;
 
-        if (domain) cookie += ';domain=' + appConfig.DOMAIN;
-        if (secure) cookie += ';secure';
+        if (domain) cookie += '; domain=' + appConfig.COOKIE_DOMAIN;
+        if (secure) cookie += '; secure';
+        cookie += '; path=/';
 
         document.cookie = cookie;
 
@@ -41,14 +41,9 @@ angular
       CookieService.prototype.remove = function(key) {
         if (!key) throw new Error('cookieService - remove - key is required');
 
-        var domain = appConfig.ENABLE_COOKIE_DOMAIN || false;
         var expires = 'Thu, 01 Jan 1970 00:00:00 GMT'; //update the cookie's expiration date to date in the past
 
-        var cookie = key + '=;expires=' + expires;
-
-        if (domain) cookie += ';domain=' + appConfig.DOMAIN;
-
-        document.cookie = cookie;
+        this.set(key, null, expires);
 
         return true;
       };

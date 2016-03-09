@@ -3,8 +3,9 @@ angular
     '$q',
     'cookieService',
     'mailchimpService',
-    function($q, cookieService, mailchimpService) {
-      var COOKIE_NAME = 'registered';
+    'appConfig',
+    function($q, cookieService, mailchimpService, appConfig) {
+      var COOKIE_NAME = appConfig.NAME.toLowerCase() + '-registered';
 
       function RegisterService() {}
 
