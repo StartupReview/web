@@ -1,7 +1,8 @@
 'use strict';
 
-let fs = require('fs');
-let mime = require('express').static.mime;
+const fs = require('fs');
+const mime = require('express').static.mime;
+const _ = require('underscore');
 
 const METHODS = ['GET', 'HEAD'];
 
