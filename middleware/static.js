@@ -25,8 +25,8 @@ module.exports = function(dir) {
         res.contentType(mime.lookup(req.path));
         res.status(200);
       })
-      .on('error', err => {
-        return next(err);
+      .on('error', () => {
+        return next(null);
       })
       .pipe(res);
   };
