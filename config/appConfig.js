@@ -7,7 +7,7 @@ const ENV = _setupEnv(NODE_ENV);
 const PORT = process.env.PORT || 2020;
 
 const defaultSettings = {
-  NAME: 'StartReview',
+  NAME: 'Startup Review',
   PORT: PORT,
   BUILD_DIR: 'build',
   COOKIE_DOMAIN: '.reviewstartups.com',
