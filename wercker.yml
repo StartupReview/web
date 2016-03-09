@@ -56,7 +56,6 @@ deploy:
         name: clean-build
         code: |
           rm -rf node_modules
-          rm -rf ssh
           rm -rf src
           rm -rf tests
           rm -rf .git*
