@@ -51,6 +51,7 @@ const VENDOR_JS = [
   BUILDDIR + '/bower_components/bootstrap/dist/js/bootstrap.js',
   BUILDDIR + '/bower_components/angular-resource/angular-resource.js',
   BUILDDIR + '/bower_components/angular-ui-router/release/angular-ui-router.js',
+  BUILDDIR + '/bower_components/angular-cookies/angular-cookies.js',
   BUILDDIR + '/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
   BUILDDIR + '/bower_components/underscore/underscore.js',
   BUILDDIR + '/bower_components/angular-animate/angular-animate.js',

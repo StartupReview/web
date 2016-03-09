@@ -2,7 +2,8 @@ angular.module('startupReviewApp', [
   'ui.bootstrap',
   'ui.router',
   'ngAnimate',
-  'ngSanitize'
+  'ngSanitize',
+  'ngCookies'
 ]);
 
 angular.module('startupReviewApp').run([
