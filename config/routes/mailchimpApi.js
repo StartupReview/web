@@ -55,8 +55,6 @@ function _getUrl(endpoint) {
 
   let fullUrl = `https://${appConfig.MAILCHIMP_USERNAME}:${appConfig.MAILCHIMP_API_KEY}@${MAILCHIMP_BASE_URL}/${endpoint}`;
 
-  console.log('FULL URL', fullUrl);
-
   return fullUrl;
 }
 
