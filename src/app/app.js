@@ -2,7 +2,9 @@ angular.module('startupReviewApp', [
   'ui.bootstrap',
   'ui.router',
   'ngAnimate',
-  'ngSanitize'
+  'ngSanitize',
+  'ngCookies',
+  'ng-bs-animated-button'
 ]);
 
 angular.module('startupReviewApp').run([

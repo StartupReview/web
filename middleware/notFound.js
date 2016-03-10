@@ -7,11 +7,10 @@ module.exports = function() {
     } else {
       next();
     }
-  }
+  };
 };
 
 function isFile(req) {
   let fileName = req.path.split('/').pop();
-  let isFile = fileName.split('.').length > 1;
-  return isFile;
+  return fileName.split('.').length > 1;
 }

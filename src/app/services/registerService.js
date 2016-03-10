@@ -1,15 +1,16 @@
 angular
   .module('startupReviewApp').service('registerService', [
     '$q',
-    'cookieService',
+    '$cookies',
     'mailchimpService',
-    function($q, cookieService, mailchimpService) {
-      var COOKIE_NAME = 'registered';
+    'appConfig',
+    function($q, $cookies, mailchimpService, appConfig) {
+      var COOKIE_NAME = '_' + appConfig.NAME.toLowerCase() + 'Registered';
 
       function RegisterService() {}
 
       RegisterService.prototype.hasRegistered = function() {
-        var cookie = cookieService.get(COOKIE_NAME);
+        var cookie = $cookies.get(COOKIE_NAME);
 
         return cookie ? true : false;
       };
@@ -22,20 +23,18 @@ angular
             .then(function(response) {
               console.log('RESPONSE', response);
 
-              var created = cookieService.set(COOKIE_NAME, true);
+              var created = $cookies.put(COOKIE_NAME, 1, {
+                expires: 'Fri, 31 Dec 9999 23:59:59 GMT'
+              });
 
-              if (created) {
-                return resolve(created);
-              } else {
-                return reject(new Error('Error registering'));
-              }
+              return resolve(created);
             })
             .catch(reject);
         });
       };
 
       RegisterService.prototype.unRegister = function() {
-        cookieService.remove(COOKIE_NAME);
+        $cookies.remove(COOKIE_NAME);
       };
 
       return new RegisterService();

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(appConfig) {
+module.exports = function() {
   return (req, res, next) => {
     res.set('Vary', 'Accept-Encoding');
     return next(null);

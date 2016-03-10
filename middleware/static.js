@@ -1,8 +1,8 @@
 'use strict';
 
-let fs = require('fs');
-let _ = require('underscore');
-let mime = require('express').static.mime;
+const fs = require('fs');
+const mime = require('express').static.mime;
+const _ = require('underscore');
 
 const METHODS = ['GET', 'HEAD'];
 
@@ -10,6 +10,7 @@ module.exports = function(dir) {
   return (req, res, next) => {
     let path = req.path;
     let mimeType = mime.lookup(path);
+
     if (mimeType === 'text/html') {
       res.set('Cache-Control', 'max-age=0, no-cache');
     } else {
@@ -24,8 +25,8 @@ module.exports = function(dir) {
         res.contentType(mime.lookup(req.path));
         res.status(200);
       })
-      .on('error', err => {
-        next();
+      .on('error', () => {
+        return next(null);
       })
       .pipe(res);
   };

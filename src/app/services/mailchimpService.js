@@ -2,14 +2,11 @@ angular
   .module('startupReviewApp').service('mailchimpService', [
     '$q',
     '$http',
-    'appConfig',
-    function($q, $http, appConfig) {
+    function($q, $http) {
 
       var LIST_IDS = {
         STARTUP_REVIEW_BETA: '9f53b207f1'
       };
-
-      var ADDRESS = 'us12';
 
       function MailChimpService() {}
 
@@ -37,28 +34,11 @@ angular
         return $q(function(resolve, reject) {
           if (!email) return reject('Email is required');
 
-          var url = 'https://' + ADDRESS + '.api.mailchimp.com/3.0/lists/subscribe.json?u=' + appConfig.MAILCHIMP_API_KEY + '&id=' + LIST_IDS.STARTUP_REVIEW_BETA;
-
-          $.ajax({
-            url: url,
-            data: {
-              EMAIL: email //jshint ignore:line
-            },
-            dataType: 'jsonp',
-            contentType: 'application/json; charset=utf-8',
-            error: function(err) {
-              console.log(err);
-
-              return reject(new Error('Could not connect to the registration server. Please try again later.'));
-            },
-            success: function(data) {
-              if (data.result !== 'success') {
-                return reject('Error registering');
-              } else {
-                return resolve(data);
-              }
-            }
-          });
+          $http.post('/mailchimp/subscribe/' + LIST_IDS.STARTUP_REVIEW_BETA, {
+              email: email
+            })
+            .then(resolve)
+            .catch(reject);
         });
       }
 

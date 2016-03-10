@@ -13,8 +13,7 @@
       <div class="email form-group" ng-class="{ 'has-error' : !registerForm.email.$valid && submitted }">
         <input class="form-control" type="text" name="email" placeholder="e.g. dreadpiraterob@darknet.com" ng-model="form.email" required>
       </div>
-      <button class="btn btn-secondary" type="submit" ng-click="register(registerForm)">
-        <i class="fa fa-arrow-right"></i>
+      <button class="register-btn btn btn-secondary" type="submit" ng-click="register(registerForm)" ng-bs-animated-button is-submitting="registerSubmitting" result="registerResult" options="registerBtnOptions">
       </button>
     </form>
   </div>
