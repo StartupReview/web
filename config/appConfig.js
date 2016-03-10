@@ -16,7 +16,8 @@ const defaultSettings = {
   MAILCHIMP_USERNAME: 'thestartupreview',
   MAILCHIMP_API_KEY: process.env.MAILCHIMP_API_KEY,
   MAILCHIMP_API_DC: 'us12',
-  GOOGLE_ANALYTICS: 'xxxxxxxxxx'
+  GOOGLE_ANALYTICS: 'xxxxxxxxxx',
+  NEWRELIC_API_KEY: process.env.NEWRELIC_API_KEY
 };
 
 const production = _.extend(_.clone(defaultSettings), {
