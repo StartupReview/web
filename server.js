@@ -4,6 +4,7 @@ const appConfig = require('./config/appConfig');
 const app = require('./config/expressConfig').configure();
 
 if (appConfig.ENV === 'production') {
+  console.log('NEWRELIC ENABLED');
   require('newrelic');
 }
 
