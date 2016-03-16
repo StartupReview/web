@@ -1,6 +1,6 @@
 'use strict';
 
-const NODE_ENV = process.env.WERCKER_GIT_BRANCH || process.env.NODE_ENV || process.argv[3].replace('-', '');
+const NODE_ENV = process.env.WERCKER_GIT_BRANCH || process.env.NODE_ENV || (process.argv[3] ? process.argv[3].replace('-', '') : 'development');
 
 const env = require('node-env-file');
 
