@@ -58,6 +58,7 @@ const VENDOR_JS = [
   BUILDDIR + '/bower_components/angular-sanitize/angular-sanitize.js',
   BUILDDIR + '/bower_components/moment/moment.js',
   BUILDDIR + '/bower_components/slick-carousel/slick/slick.js',
+  BUILDDIR + '/bower_components/angular-scroll/angular-scroll.js',
   BUILDDIR + '/vendor/ng-bs-animated-button.js'
 ];
 
