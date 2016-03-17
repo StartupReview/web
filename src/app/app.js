@@ -4,6 +4,7 @@ angular.module('startupReviewApp', [
   'ngAnimate',
   'ngSanitize',
   'ngCookies',
+  'duScroll',
   'ng-bs-animated-button'
 ]);
 
