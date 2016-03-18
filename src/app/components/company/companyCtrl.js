@@ -23,12 +23,20 @@ angular.module('startupReviewApp').controller('companyCtrl', [
       init: function() {}
     };
 
-    $scope.activateSection = function(section, $event) {
+    $scope.activateSection = function(section, options, $event) {
+      if (arguments.length === 2) {
+        options = $event;
+      }
+
+      options = options || {};
+
+      options.setSearch = ('setSearch' in options) ? options.setSearch : true;
+
       if ($event) $event.preventDefault();
 
       $scope.currentSection = section;
 
-      $location.search('section', section.name);
+      if (options.setSearch) $location.search('section', section.name);
 
       $timeout(function() {
         if ($scope.disqusHandle.refresh) $scope.disqusHandle.refresh({
@@ -91,18 +99,20 @@ angular.module('startupReviewApp').controller('companyCtrl', [
         url: _getAbsoluteUrl() + '/traction'
       }];
 
-      var activeSection;
+      var activeSection = $scope.sections[0];
       var locationParams = $location.search();
 
       if (locationParams && locationParams.section) {
         activeSection = _.findWhere($scope.sections, {
           name: locationParams.section
         });
+
+        $scope.activeSection = activeSection;
       }
 
-      activeSection = activeSection || $scope.sections[0];
-
-      $scope.activateSection(activeSection);
+      $scope.activateSection(activeSection, {
+        setSearch: false
+      }, null);
     }
 
     function _getAbsoluteUrl() {

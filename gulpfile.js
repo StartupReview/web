@@ -1,6 +1,6 @@
 'use strict';
 
-const NODE_ENV = process.env.WERCKER_GIT_BRANCH || process.env.NODE_ENV || process.argv[3].replace('-', '');
+const NODE_ENV = process.env.WERCKER_GIT_BRANCH || process.env.NODE_ENV || (process.argv[3] ? process.argv[3].replace('-', '') : 'development');
 
 const env = require('node-env-file');
 
@@ -58,6 +58,7 @@ const VENDOR_JS = [
   BUILDDIR + '/bower_components/angular-sanitize/angular-sanitize.js',
   BUILDDIR + '/bower_components/moment/moment.js',
   BUILDDIR + '/bower_components/slick-carousel/slick/slick.js',
+  BUILDDIR + '/bower_components/angular-scroll/angular-scroll.js',
   BUILDDIR + '/vendor/ng-bs-animated-button.js'
 ];
 

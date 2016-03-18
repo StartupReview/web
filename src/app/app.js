@@ -4,6 +4,7 @@ angular.module('startupReviewApp', [
   'ngAnimate',
   'ngSanitize',
   'ngCookies',
+  'duScroll',
   'ng-bs-animated-button'
 ]);
 
@@ -13,10 +14,13 @@ angular.module('startupReviewApp').run([
   '$timeout',
   '$window',
   'registerService',
-  function($rootScope, $state, $timeout, $window, registerService) {
+  'appConfig',
+  function($rootScope, $state, $timeout, $window, registerService, appConfig) {
     $rootScope.$state = $state;
 
     $timeout(function() {
+      if (appConfig.ENV === 'local') return;
+
       $state.go('register'); //always go to the register page for now
     });
 
@@ -25,6 +29,8 @@ angular.module('startupReviewApp').run([
     });
 
     $rootScope.$on('$stateChangeStart', function(event, toState) {
+      if (appConfig.ENV === 'local') return;
+
       if (!registerService.hasRegistered() && toState.name !== 'register') {
         event.preventDefault();
 
