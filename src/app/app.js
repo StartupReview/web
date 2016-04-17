@@ -37,5 +37,11 @@ angular.module('startupReviewApp').run([
         $state.go('register');
       }
     });
+
+    $rootScope.$on('$stateChangeStart', function() {
+      $timeout(function() {
+        $window.scrollTo(0, 0);
+      });
+    });
   }
 ]);
